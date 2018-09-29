@@ -90,12 +90,20 @@ class PuppyController extends Controller
           'name' => $request->name,
           'breeder_price' => $request->price,
           'breeder_deposit' =>$request->deposit,
-          'pavluv_price' => $money['gross'],
-          'pavluv_keeps' => $money['net'],
           'sale_type' => $saleType,
           'color' => $request->color,
           'is_male' => $isMale,
         ]);
+
+        $puppy->pavluv_price = $money['gross'];
+        $puppy->pavluv_keeps = $money['net'];
+        $puppy->save();
+
+        $response = new \stdClass();
+        $response->title = "SAVED";
+        $response->message = "Puppy was saved successfully";
+        $response->code = 200;
+        return json_encode($response);
     }
 
     /**

@@ -135,8 +135,8 @@ $( document ).ready(function(){
         console.log('AJAX Error: ' + textStatus + ": " + errorThrown);
         },
         success: function(response){
-          console.log(response);
-          toastr.success('Saved.')
+          var response = JSON.parse(response)
+          toastr.success(response.message, response.title);
         },
       })
     }
