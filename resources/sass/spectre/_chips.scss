@@ -10,9 +10,13 @@
   line-height: $unit-4;
   margin: $unit-h;
   max-width: 100%;
-  padding: $unit-1 $unit-2;
+  padding: 18px;
   text-decoration: none;
   vertical-align: middle;
+
+  &:hover{
+    cursor:pointer;
+  }
 
   &.active {
     background: $primary-color;

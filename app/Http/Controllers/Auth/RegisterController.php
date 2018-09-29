@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use Carbon;
 use App\User;
+use App\UserRole;
+use App\Kennel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -28,7 +31,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/dashboard';
 
     /**
      * Create a new controller instance.
@@ -52,6 +55,11 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'province'  => 'required|string|min:2',
+            'city'  => 'required|string|min:2',
+            'street'  => 'required|string|min:5',
+            'cellphone'  => 'required|string|min:10',
+            'role'  => 'string',
         ]);
     }
 
@@ -63,10 +71,52 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+      //If the user manipulated the hidden input
+      if($data['role'] != 'buyer' && $data['role'] != 'breeder')
+      {
+        return redirect('/home');
+      }
+
+      //By default, set to basic. If it's a breeder registering, make it a trial account.
+      $accountType = 'basic';
+      if($data['role'] == 'breeder')
+      {
+        $accountType = 'trial';
+      }
+
+      //Create the user
+      $user = User::create([
+          'name' => $data['name'],
+          'email' => $data['email'],
+          'password' => Hash::make($data['password']),
+          'province' => $data['province'],
+          'city'  => $data['city'],
+          'street'  => $data['street'],
+          'postal'  => $data['postal'],
+          'cellphone' => $data['cellphone'],
+          'trial_ends_at' => \Carbon\Carbon::now()->addMonths(3),
+          'account_type' => $accountType,
+      ]);
+
+      //Create the user role.
+      UserRole::create([
+        'role' => $data['role'],
+        'user_id' => $user->id,
+      ]);
+
+      if($user->isBreeder())
+      {
+        $kennel = Kennel::create([
+          'user_id' => $user->id,
+          'province' => $user->province,
+          'city' => $user->city,
+          'address' => $user->street,
+          'postal' => $user->postal,
+          'phone' => $user->cellphone
         ]);
+      }
+
+      //Return the user so that it can auto-login to dashboard.
+      return $user;
     }
 }

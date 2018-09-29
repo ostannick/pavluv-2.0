@@ -4,6 +4,8 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  background-color: white;
+  padding: 8px;
 
   .navbar-section {
     align-items: center;
@@ -12,6 +14,9 @@
 
     &:not(:first-child):last-child {
       justify-content: flex-end;
+    }
+    a{
+      margin: 4px;
     }
   }
 

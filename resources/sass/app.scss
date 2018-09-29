@@ -2,13 +2,435 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
-// Variables
+// Hard-coded Spectre Variables
+// Body
+$body-bg: #f8fafc;
+
+// Core colors
+$primary-color: #0f7ae5 !default;
+$primary-color-dark: darken($primary-color, 3%) !default;
+$primary-color-light: lighten($primary-color, 3%) !default;
+$secondary-color: lighten($primary-color, 37.5%) !default;
+$secondary-color-dark: darken($secondary-color, 3%) !default;
+$secondary-color-light: lighten($secondary-color, 3%) !default;
+
+$pavluv-red: #EF516E !default;
+$pavluv-blue: #0f7ae5 !default;
+$pavluv-purple: #976593 !default;
+
+$grey-0: #fafafa;
+$grey-1: #f5f5f5;
+$grey-2: #eeeeee;
+$grey-3: #e0e0e0;
+$grey-4: #bdbdbd;
+
+$dark-color: #454d5d !default;
+
+$font-huge: 32px;
+$font-big: 24px;
+$font-med: 16px;
+$font-small: 10px;
+
 @import 'variables';
 
+
+html{
+  height: 100%;
+}
 body{
+  height: 100%;
   background-color: #e3e8ee;
+  min-width: 350px;
+}
+main{
+  display: flex;
+
+}
+footer{
+  background-color: $grey-1;
+  width: 100%;
+  padding: 24px;
+  p.copyright-statement{
+    margin-top: 32px;
+    margin-bottom: 0 !important;
+  }
+}
+.website-container{
+  display: flex;
+  flex-direction: column;
+  background-size: cover;
+  min-height: 100%;
+  justify-content: space-between;
+}
+.pavluv-content-wrapper{
+  flex-grow: 1;
+  min-height: 900px;
+}
+.background-wrapper{
+  display: flex;
+  height: 100%;
+  background-size: cover;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.pavluv-red{
+  color: $pavluv-red;
+}
+.pavluv-blue{
+  color: $pavluv-blue;
 }
 
-div.pavluv-navbar{
-  
+/* HOME PAGE */
+#pavluv-landing-pane{
+  display: flex;
+  background-size: cover;
+  justify-content: center;
+  align-items: center;
+
+}
+.pane-content-wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* EFFECTS AND UTILITIES */
+.icon-list-horizontal{
+  display: flex;
+  list-style: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin: 0;
+  li{
+    padding-right: 16px;
+    a{
+      color: $dark-color;
+    }
+    :first-child{
+      padding-left: none;
+    }
+    :last-child{
+      padding-right: none;
+    }
+  }
+}
+.link-list-vertical{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+
+  li{
+    color: $primary-color-light;
+  }
+}
+.pav-underlay{
+  background-color: rgba(white, 0.5);
+  padding: 32px;
+}
+
+hr{
+  border: none;
+  height: 3px;
+  background-color: $grey-2;
+  margin: 32px 0;
+
+  &.pav-divider-invis{
+    height: 0px;
+    margin: 48px 0;
+  }
+}
+
+/* CONTENT POSITIONING */
+.nav-logo{
+  height: 55px;
+}
+.flex-column-wrapper{
+  display: flex;
+  flex-direction: column;
+  *{
+    margin-top: 8px;
+  }
+}
+.pav-align-center{
+  text-align: center;
+}
+.pav-align-left{
+  text-align: left;
+}
+.pav-align-right{
+  text-align: right;
+}
+.pav-padding-8{
+  padding: 8px;
+}
+.pav-padding-16{
+  padding: 16px;
+}
+.pav-padding-24{
+  padding: 24px;
+}
+.pav-padding-32{
+  padding: 24px;
+}
+.pav-padding-top-32{
+  padding-top: 32px;
+}
+.pav-margin-top-32{
+  margin-top: 32px;
+}
+.pav-margin-top-bottom{
+  margin: 8px 0;
+}
+.pav-margin-bottom{
+  margin-bottom: 8px;
+}
+.pav-display-none{
+  display: none;
+}
+
+.pav-card{
+  box-shadow: 0 0.05rem 0.2rem rgba(69, 77, 93, 0.3);
+  margin-top: 0.2rem;
+  background-color: white;
+  border-radius: 0.1rem;
+  width: 100%;
+  height: auto;
+}
+.pav-card.pav-card-body{
+  padding: 16px;
+}
+.card-footer{
+  display: flex;
+  flex-direction: column;
+  background-color: $grey-2;
+  padding: 24px;
+}
+
+.button-container{
+  display: flex;
+  justify-content: space-around;
+
+  button{
+    margin-right: 8px;
+  }
+
+  > button:last-child{
+    margin-right: 0px;
+  }
+}
+
+/*STRIPE*/
+#card-element{
+  padding: 16px;
+  margin: 0 0 32px 0;
+  box-shadow: 0 0.05rem 0.2rem rgba(69, 77, 93, 0.3);
+  border-radius: 5px;
+}
+
+/* UPLOAD */
+div .pav-upload-space{
+  width: auto;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  border: 1px dashed $secondary-color-light;
+  margin: 0 16px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+/* NOTIFICATION-SPECIFIC CSS */
+div .pav-notification{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 1px solid $secondary-color-light;
+
+  .body{
+    flex-grow: 1;
+  }
+
+  ul{
+    list-style: none;
+
+    li:first-child{
+      font-weight: 700;
+    }
+  }
+}
+
+/* FORMS */
+div .pav-friendly-input-group{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  .form-group{
+    flex-grow: 1;
+    flex-basis: 0;
+    padding-right: 8px;
+  }
+  .form-group:last-child{
+    padding-right: 0px;
+  }
+}
+div .pav-friendly-input{
+  margin: 4px 0px;
+  flex-grow: 1;
+
+  label{
+    margin-bottom: 8px;
+    display: block;
+  }
+}
+div .friendly-form-field{
+  display:flex;
+  align-items: center;
+  i{
+    color: red;
+    min-width: 30px;
+    font-size: 22px;
+  }
+}
+input[type="text"],
+input[type="password"],
+input[type="date"],
+input[type="file"],
+input[type="number"],
+textarea,{
+  &.pav-friendly-input{
+    width: 100%;
+    padding: 16px 16px;
+    border-radius: 8px;
+    border: 2px solid $grey-3;
+    box-shadow: inset 0 4px 0px $grey-2;
+    font-size: 22px;
+    transition: all 0.1s linear;
+    resize: vertical;
+
+    &::placeholder{
+      color: $grey-4;
+    }
+
+    &:focus{
+      border: 2px solid $pavluv-blue;
+      box-shadow: 0 0 10px 0 rgba($pavluv-blue, 0.4);
+      outline: none !important;
+    }
+  }
+}
+
+/* BUTTONS */
+.pav-btn-big{
+  border-radius: 8px;
+  border: none;
+  background-color: $primary-color;
+  color: white;
+  text-align: center;
+  flex-grow: 1;
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-size: $font-big;
+  box-shadow: inset 0 -4px 0 darken($primary-color-dark, 5%);
+  outline: none;
+
+  &.selected{
+    background-color: $primary-color;
+    box-shadow: inset 0 4px 0;
+    outline: none;
+    padding-top: 20px;
+    padding-bottom: 12px;
+  }
+
+  &.deselected{
+
+      color: black;
+      background-color: darken($grey-3, 1%);
+      box-shadow: inset 0 -4px 0 darken($grey-3, 5%);
+
+    &:hover{
+      transition: all 0.1s linear;
+      background-color: darken($grey-3, 1%);
+      cursor: pointer;
+    }
+    &:active{
+      box-shadow: inset 0 4px 0 darken($grey-3, 5%);
+      outline: none;
+      padding-top: 20px;
+      padding-bottom: 12px;
+    }
+
+  }
+
+  &:active{
+    box-shadow: inset 0 4px 0 darken($primary-color-dark, 5%);
+    outline: none;
+    padding-top: 20px;
+    padding-bottom: 12px;
+  }
+
+}
+
+/* LITTER WIZARD-SPECIFIC CSS */
+.siredam-list-wrapper{
+  > button{
+    margin-top: 16px;
+  }
+}
+
+/* APPLICATION-SPECIFIC CSS */
+
+div .pav-application-thumbnail-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+div .pav-application-thumbnail{
+  flex-grow: 1;
+  border-radius: 0.1rem;
+  box-shadow: 0 0.05rem 0.2rem rgba(69, 77, 93, 0.3);
+  padding: 16px;
+  margin: 8px;
+
+  h5{
+    padding-top: 16px;
+  }
+
+  ul{
+    list-style: none;
+    margin: 0 !important;
+    display:flex;
+    flex-direction: column;
+
+    li{
+      align-self: center;
+    }
+  }
+}
+
+/* WAITING LIST-SPECIFIC CSS */
+div .pav-waiting-list-entry{
+
+  border-bottom: 1px dashed $secondary-color;
+
+  ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+
+    li{
+      padding: 4px;
+
+    }
+  }
+
 }

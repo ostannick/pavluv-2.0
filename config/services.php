@@ -35,5 +35,10 @@ return [
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],
+    'pavluv' => [
+        'base' => 150.00,
+        'percent' => 0.05,
+        'addon' => 50.00,
+    ],
 
 ];

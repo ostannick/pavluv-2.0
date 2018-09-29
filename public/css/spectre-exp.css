@@ -681,7 +681,7 @@
 }
 
 .meter::-webkit-meter-even-less-good-value {
-  background: #e85600;
+  background: #EF516E;
 }
 
 .meter::-moz-meter-bar,
@@ -700,7 +700,7 @@
 }
 
 .meter:-moz-meter-sub-sub-optimum::-moz-meter-bar {
-  background: #e85600;
+  background: #EF516E;
 }
 
 .off-canvas {
@@ -746,7 +746,6 @@
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
   height: 100%;
-  padding: 0.4rem 0.4rem 0.4rem 4rem;
 }
 
 .off-canvas .off-canvas-overlay {

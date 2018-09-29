@@ -1,6 +1,18 @@
 @extends ('layouts.appmaster')
 
 @section ('content')
-<a href="/register" class="btn btn-primary">Sign Up</a>
-<a href="/login" class="btn btn-primary">Sign In <i class="fab fa-affiliatetheme"></i></a>
+
+  <div id="pavluv-landing-pane">
+    <div class="container">
+
+      <div class="pane-content-wrapper">
+        <div class="pane-content">
+          <button class="pav-btn-big" type="button" name="button">Please Leave</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
 @stop
