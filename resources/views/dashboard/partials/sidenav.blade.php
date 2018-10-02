@@ -9,6 +9,12 @@
   <div class="pav-align-center pav-padding-8">
     <h4>{{Auth::user()->name}}</h4>
   </div>
+  <div class="form-group">
+    <label class="form-switch">
+      <input type="checkbox" class="dashboard-mode-switcher" name="does_register">
+      <i class="form-icon"></i> Switch to buyer mode
+    </label>
+  </div>
 
   <!--MESSAGES AND NOTIFICATIONS-->
   <li class="divider">
@@ -31,35 +37,9 @@
   @endif
 
   <!--INDEPENDENT USER SECTION-->
-  <li class="divider" data-content="Nick Ostan"></li>
-  <li class="menu-item">
-    <a href="/dashboard/profile">
-      <i class="fal fa-user-edit fa-fw"></i> Edit Profile
-    </a>
-  </li>
-  <li class="menu-item">
-    <a href="#">
-      <i class="fal fa-file-invoice fa-fw"></i> My Applications
-    </a>
-  </li>
-  <li class="menu-item">
-    <a href="#">
-      <i class="fal fa-paw fa-fw"></i> My Puppies
-    </a>
-  </li>
-  <li class="menu-item">
-    <a href="/dashboard/questionnaire">
-      <i class="fal fa-question-circle fa-fw"></i> My Questionnaire
-    </a>
-  </li>
-  <li class="menu-item">
-    <a href="/dashboard/billing">
-      <i class="fal fa-dollar-sign fa-fw"></i> Billing
-    </a>
-  </li>
-  <li class="menu-item">
-    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out fa-fw"></i> Log Out</a>
-  </li>
+    @include('dashboard.partials.usernav')
+
+
   @endauth
   <li class="divider" data-content="Site Links"></li>
   <li class="menu-item">
@@ -81,6 +61,9 @@
     <a href="#">
       <i class="fab fa-fw fa-blogger-b"></i> PavLuv's Blog
     </a>
+  </li>
+  <li class="menu-item">
+    <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"><i class="fal fa-sign-out fa-fw"></i> Log Out</a>
   </li>
 
 </ul>

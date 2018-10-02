@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Sire;
 use Illuminate\Http\Request;
+use Auth;
+use App\Sire;
+use App\Dam;
 
-class SireController extends Controller
+class SiredamController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,16 +37,35 @@ class SireController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->is_male)
+        {
+          Sire::create([
+            'kennel_id' => Auth::user()->kennel->id,
+            'name' => $request->name,
+            'breed' => $request->breed,
+            'birthday' => \Carbon\Carbon::parse($request->birthday),
+            'color' => $request->color,
+          ]);
+        }
+        else
+        {
+          Dam::create([
+            'kennel_id' => Auth::user()->kennel->id,
+            'name' => $request->name,
+            'breed' => $request->breed,
+            'birthday' => \Carbon\Carbon::parse($request->birthday),
+            'color' => $request->color,
+          ]);
+        }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Sire  $sire
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Sire $sire)
+    public function show($id)
     {
         //
     }
@@ -52,10 +73,10 @@ class SireController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Sire  $sire
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Sire $sire)
+    public function edit($id)
     {
         //
     }
@@ -64,10 +85,10 @@ class SireController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Sire  $sire
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Sire $sire)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -75,10 +96,10 @@ class SireController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Sire  $sire
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Sire $sire)
+    public function destroy($id)
     {
         //
     }

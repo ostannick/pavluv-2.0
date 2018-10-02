@@ -42,7 +42,10 @@ class DashboardController extends Controller
     }
     public function showKennel()
     {
-      return View::make('dashboard.kennel');
+      return View::make('dashboard.kennel')->with
+      ([
+        'kennel' => Auth::user()->kennel,
+      ]);
     }
     public function showBilling()
     {
@@ -63,5 +66,9 @@ class DashboardController extends Controller
         'sires' => Auth::user()->kennel->sires,
         'dams' => Auth::user()->kennel->dams,
       ]);
+    }
+    public function showPuppyManager()
+    {
+      return view('dashboard.manage-puppies');
     }
 }

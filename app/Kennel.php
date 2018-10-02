@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Kennel extends Model
 {
     //Allows all fields to be mass assigned
-    protected $guarded = [];
+    protected $guarded = [
+      'rating_cache',
+    ];
 
     public function sires()
     {

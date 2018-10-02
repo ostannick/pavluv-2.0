@@ -65,6 +65,7 @@ footer{
 .pavluv-content-wrapper{
   flex-grow: 1;
   min-height: 900px;
+  background-size: cover;
 }
 .background-wrapper{
   display: flex;
@@ -125,7 +126,7 @@ footer{
   }
 }
 .pav-underlay{
-  background-color: rgba(white, 0.5);
+  background-color: rgba(white, 0.7);
   padding: 32px;
 }
 

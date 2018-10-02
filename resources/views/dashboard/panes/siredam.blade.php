@@ -1,65 +1,65 @@
 <div class="pav-align-right pav-margin-bottom">
-  <button class="btn btn-primary" onclick="pavToast('test')">ADD NEW SIRE/DAM</button>
+  <a href="#new-siredam-modal" class="btn btn-primary modal-trigger">ADD NEW SIRE/DAM</a>
 </div>
+
 <div class="columns">
 
-  <!--Single Sire/Dam Entry-->
-  <div class="column col-4 col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title h5"><input type="text" class="form-input" placeholder="My New Sire/Dam"></div>
-        <div class="card-subtitle text-gray"><input type="text" class="form-input" placeholder="My Birthday"> </div>
-      </div>
-      <div class="card-image">
-        <div class="pav-upload-space">
-          <i class="fal fa-fw fa-3x fa-image"></i>
-          <span>Drag & drop upload to my images and documents here!</span>
+
+
+</div>
+
+<div class="modal active" id="new-siredam-modal">
+  <a href="#close" class="modal-overlay modal-close" aria-label="Close"></a>
+  <div class="modal-container">
+    <div class="modal-header">
+      <a href="#close" class="btn btn-clear float-right modal-close" aria-label="Close"></a>
+      <div class="modal-title h5">Add New Sire/Dam</div>
+    </div>
+    <div class="modal-body">
+      <form action="/siredam" method="post">
+        @csrf
+        <div class="content">
+
+          <p>Are you making a sire or a dam? Select:</p>
+          <div class="button-container">
+            <input type="hidden" name="is_male" value="">
+            <button type="button" class="pav-btn-big btn-big-select deselected" data-value="1" name="button">Sire <i class="fal fa-fw fa-mars"></i> </button>
+            <button type="button" class="pav-btn-big btn-big-select deselected" data-value="0" name="button">Dam <i class="fal fa-fw fa-venus"></i> </button>
+          </div>
+
+          <div class="pav-friendly-input-group">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="pav-friendly-input" name="name" placeholder="My name..." value="" required>
+            </div>
+          </div>
+
+          <div class="pav-friendly-input-group">
+            <div class="form-group">
+              <label>Breed</label>
+              <input type="text" class="pav-friendly-input" name="breed" placeholder="My breed..." value="" required>
+            </div>
+          </div>
+
+          <div class="pav-friendly-input-group">
+            <div class="form-group">
+              <label>Birthday</label>
+              <input type="text" class="pav-friendly-input" name="birthday" placeholder="My birthday..." value="" required>
+            </div>
+            <div class="form-group">
+              <label>Colour</label>
+              <input type="text" class="pav-friendly-input" name="color" placeholder="Colour" value="" required>
+            </div>
+          </div>
+
+          <div class="pav-friendly-input">
+            <button type="submit" class="pav-btn-big" name="button">Save & Continue<i class="fal fa-fw fa-check"></i> </button>
+          </div>
+
         </div>
-      </div>
-      <div class="card-body"><textarea class="form-input" style="min-height: 100px" placeholder="About me..."></textarea> </div>
-      <div class="card-footer">
-        <div class="btn-group btn-group-block">
-          <button class="btn btn-primary">Save</button>
-          <button class="btn btn-default">Cancel</button>
-        </div>
-      </div>
+
+      </form>
+
     </div>
   </div>
-
-  <!--Single Sire/Dam Entry-->
-  <div class="column col-4 col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title h5">Romeo</div>
-        <div class="card-subtitle text-gray">French Bulldog (8 years old)</div>
-      </div>
-      <div class="card-image"><img class="img-responsive" src="/img/sire.jpg" alt="OS X Yosemite"></div>
-      <div class="card-body">This pup is a serious pooch.</div>
-      <div class="card-footer">
-        <div class="btn-group btn-group-block">
-          <button class="btn btn-primary">Edit</button>
-          <button class="btn btn-default">Remove</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!--Single Sire/Dam Entry-->
-  <div class="column col-4 col-md-12">
-    <div class="card">
-      <div class="card-header">
-        <div class="card-title h5">Juliette</div>
-        <div class="card-subtitle text-gray">French Bulldog (5 years old)</div>
-      </div>
-      <div class="card-image"><img class="img-responsive" src="/img/dam.jpg" alt="OS X Yosemite"></div>
-      <div class="card-body">She is the best girl! Loves ice cream.</div>
-      <div class="card-footer">
-        <div class="btn-group btn-group-block">
-          <button class="btn btn-primary">Edit</button>
-          <button class="btn btn-default">Remove</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
 </div>

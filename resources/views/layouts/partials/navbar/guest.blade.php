@@ -10,7 +10,7 @@
     <a href="/home"><img src="{{asset('img/logo_lo.png')}}" class="nav-logo" alt=""></a>
   </section>
   <section class="navbar-section">
-    <a href="/register" class="btn btn-error hide-md">Sign Up <i class="fal fa-fw fa-plus"></i></a>
+    <a href="/signup" class="btn btn-error hide-md">Sign Up <i class="fal fa-fw fa-plus"></i></a>
     <a href="/login" class="btn btn-primary ">Login <i class="fal fa-fw fa-angle-right"></i></a>
   </section>
 </header>

@@ -2,10 +2,10 @@
   <li class="step-item">
     <a href="#" class="tooltip" data-tooltip="Done!">Register</a>
   </li>
-  <li class="step-item">
-    <a href="#" class="tooltip" data-tooltip="Done!">Edit Kennel Info</a>
-  </li>
   <li class="step-item active">
+    <a href="#" class="tooltip" data-tooltip="Done!">Get Verified</a>
+  </li>
+  <li class="step-item">
     <a href="#" class="tooltip" data-tooltip="50% Complete">Add Sire & Dam</a>
   </li>
   <li class="step-item">
@@ -16,6 +16,6 @@
   </li>
 </ul>
 
-@if(false)
-<hr class="pav-divider">
+@if(true)
+<hr class="pav-divider-invis">
 @endif

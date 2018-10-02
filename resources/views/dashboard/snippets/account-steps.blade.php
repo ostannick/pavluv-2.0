@@ -1,7 +1,10 @@
 <div class="columns">
   <div class="column col-12">
     <h3 class="pav-align-center">Becoming the Best Breeder Possible</h3>
+
     <div class="timeline">
+
+      @if(!Auth::user()->isVerified())
       <div class="timeline-item" id="timeline-example-1">
         <div class="timeline-left">
           <a class="timeline-icon icon-lg" href="#timeline-example-2">
@@ -15,6 +18,7 @@
           <hr class="pav-divider-invis">
         </div>
       </div>
+      @endif
 
       <div class="timeline-item" id="timeline-example-2">
         <div class="timeline-left">

@@ -69,7 +69,15 @@ class KennelController extends Controller
      */
     public function update(Request $request, Kennel $kennel)
     {
-        //
+        $response = new \stdClass();
+
+        $kennel->update($request->all());
+
+        $response->title = 'SAVED';
+        $response->message = 'Kennel details saved.';
+        $response->code = 200;
+
+        return json_encode($response);
     }
 
     /**

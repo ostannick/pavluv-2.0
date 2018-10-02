@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Dam;
 use Illuminate\Http\Request;
+use App\User;
 
-class DamController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -33,7 +33,7 @@ class DamController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user)
     {
         //
     }
@@ -41,10 +41,10 @@ class DamController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Dam  $dam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Dam $dam)
+    public function show(User $user)
     {
         //
     }
@@ -52,10 +52,10 @@ class DamController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Dam  $dam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Dam $dam)
+    public function edit(User $user)
     {
         //
     }
@@ -64,21 +64,30 @@ class DamController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Dam  $dam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Dam $dam)
+    public function update(Request $request, User $user)
     {
-        //
+        $response = new \stdClass();
+
+
+        $user->update($request->all());
+
+        $response->title = "SAVED";
+        $response->message = "Information saved successfully.";
+        $response->code = 200;
+
+        return json_encode($response);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Dam  $dam
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Dam $dam)
+    public function destroy(User $user)
     {
         //
     }

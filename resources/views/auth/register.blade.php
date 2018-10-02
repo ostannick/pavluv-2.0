@@ -1,7 +1,7 @@
 @extends('layouts.appmaster')
 
 @section('content')
-<div class="background-wrapper"  style="background-image: url('{{asset('img/temp_bg.jpg')}}')">
+<div class="background-wrapper">
   <div class="container">
     <div class="columns">
       <!--Spacer column-->

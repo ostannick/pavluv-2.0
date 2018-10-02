@@ -29,13 +29,10 @@ class User extends Authenticatable
         'cellphone',
         'facebook',
         'instagram',
-        'stripe_id',
-        'card_brand',
-        'card_last_four',
-        'trial_ends_at',
-        'account_type',
-        'verified_type',
+        'website',
+        'about',
     ];
+
 
     /**
      * The attributes that should be hidden for arrays.

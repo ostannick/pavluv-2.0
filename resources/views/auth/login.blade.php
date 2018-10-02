@@ -1,7 +1,7 @@
 @extends('layouts.appmaster')
 
 @section('content')
-<div class="background-wrapper"  style="background-image: url('{{asset('img/temp_bg.jpg')}}')">
+<div class="background-wrapper">
   <div class="container">
     <div class="columns">
       <!--Spacer column-->
@@ -37,7 +37,7 @@
             <div class="card-footer">
               <button class="pav-btn-big" type="submit" name="button">Log In <i class="fal fa-fw fa-sign-in-alt"></i> </button>
               <div class="flex-column-wrapper pav-align-center">
-                <a class="">Don't have an account?</a>
+                <a class="/signup">Don't have an account?</a>
                 <a class="">Forgot your password?</a>
               </div>
             </div>

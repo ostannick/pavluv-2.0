@@ -34,6 +34,7 @@ $( document ).ready(function(){
   $('input[name="birthday"]').daterangepicker({
     "singleDatePicker": true,
     "showDropdowns": true,
+    "drops": "up",
     "autoApply": true,
     "minYear": 1900,
     "maxDate": todayString,
@@ -101,6 +102,17 @@ $( document ).ready(function(){
     $(modal).fadeIn(100);
   });
 
+  $(".dashboard-mode-switcher").on('click', function(){
+    var isBuyerMode = $(this).is(':checked');
+    if(!isBuyerMode){
+      $(".breeder-nav-item").show();
+      $(".buyer-nav-item").hide();
+    }else{
+      $(".breeder-nav-item").hide();
+      $(".buyer-nav-item").show();
+    }
+  });
+
   $(".siredam-selector").on('click', function(){
     var container = $(this).parents('.siredam-list-wrapper');
     var allButtons = container.find('button');
@@ -127,7 +139,7 @@ $( document ).ready(function(){
       console.log(data.method, data.url, data);
       $.ajax({
         type: 'POST',
-        dataType: 'text',
+        dataType: 'json',
         url: data.url,
         data: data,
         error: function(jqXHR, textStatus, errorThrown){
@@ -136,9 +148,34 @@ $( document ).ready(function(){
         },
         success: function(response){
           var response = JSON.parse(response)
-          toastr.success(response.message, response.title);
+          if(response.code == 200){
+            toastr.success(response.message, response.title);
+          }else{
+            toastr.error(response.message, response.title);
+          }
         },
       })
+    }
+  });
+  $(".ajax-update-solo").on('change', function(){
+    var field = $(this);
+    var data = getSoloFieldForAjax($(this));
+    if(data)
+    {
+      $.ajax({
+        type: 'POST',
+        dataType: 'json',
+        url: data.url,
+        data: data.vals,
+        error: function(jqXHR, textStatus, errorThrown){
+        console.log(JSON.stringify(jqXHR));
+        console.log('AJAX Error: ' + textStatus + ": " + errorThrown);
+        },
+        success: function(response){
+          responseToast(response);
+          field.parents('.form-group').addClass('has-success');
+        }
+      });
     }
   });
 
@@ -187,6 +224,8 @@ $( document ).ready(function(){
       }
     });
 
+    console.log(valueObject);
+
     if(values.length == Object.keys(valueObject).length - 4) //-1 for me prepending the ID into the object.
     {
       //Form is complete, based on what you've labelled as an .ajax-form-field
@@ -198,5 +237,44 @@ $( document ).ready(function(){
     }
 
   }
+  function getSoloFieldForAjax(currentFocus){
+    var form = currentFocus.parents('form');
+    var fieldName = currentFocus.attr('name');
+    var value;
+
+    if(currentFocus.attr('type') == 'checkbox')
+    {
+      if (currentFocus.is(':checked')) {
+        value = 1;
+      }else{
+        value = 0;
+      }
+
+    }
+    else
+    {
+      value = currentFocus.val();
+    }
+    var valueObject = {
+      url: form.attr('data-url'),
+      id: form.attr('data-id'),
+      vals:{
+        _method: form.attr('data-method'),
+        _token: CSRF_TOKEN,
+        [fieldName]: value,
+      }
+      //You need to put variable names in brackets in order to evaluate it in a js Object.
+    };
+    return valueObject;
+  }
+  function responseToast(response){
+    console.log(response);
+    if(response.code == 200){
+      toastr.success(response.message, response.title);
+    }else{
+      toastr.error(response.message, response.title);
+    }
+  }
+
 
 });

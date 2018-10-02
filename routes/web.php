@@ -5,9 +5,9 @@ use App\PavluvQuestionnaire;
 //Public Routes, HTML Views
 Route::get('/', 'HomeController@index');
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/legal', 'HomeController@legal')->name('legal');
 //Guest, Accounts
-Route::post('/register', 'RegisterController@register');
+Route::get('/signup', 'Auth\RegisterController@choose');
 
 //Private Routes, HTML Views
 ////Dashboard
@@ -21,9 +21,13 @@ Route::get('/dashboard/kennel', 'DashboardController@showKennel');
 Route::get('/dashboard/billing', 'DashboardController@showBilling');
 Route::get('/dashboard/questionnaire', 'DashboardController@showQuestionnaire');
 Route::get('/dashboard/new-litter', 'DashboardController@showLitterWizard');
+Route::get('/dashboard/puppies', 'DashboardController@showPuppyManager');
 
+Route::resource('/users', 'UserController');
 Route::resource('/litters', 'LitterController');
 Route::resource('/puppies', 'PuppyController');
+Route::resource('/kennel', 'KennelController');
+Route::resource('/siredam', 'SiredamController');
 
 ////Wikibreedia
 

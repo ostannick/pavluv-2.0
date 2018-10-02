@@ -44,7 +44,7 @@
     </header>
 
     <main>
-      <div class="pavluv-content-wrapper">
+      <div class="pavluv-content-wrapper" style="background-image: url('{{asset('img/assign_bgs/'. rand(1,5) .'.jpg')}}')">
         @yield('content')
       </div>
     </main>
